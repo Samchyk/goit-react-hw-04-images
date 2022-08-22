@@ -11,9 +11,8 @@ import * as Scroll from 'react-scroll';
 export default function App() {
    const [searchName, setSearchName] = useState('');
    const [page, setPage] = useState(1);
-   const [perPage, setPerPage] = useState(12);
+   const [perPage] = useState(12);
    const [images, setImages] = useState([]);
-   const [showModal, setShowModal] = useState(false);
    const [loading, setLoading] = useState(false);
    const [showLoadMore, setShowLoadMore] = useState(false);
    const [modal, setModal] = useState({ url: '', alt: '' });
@@ -75,7 +74,7 @@ export default function App() {
          return;
       }
       setSearchName(name);
-      setPerPage(per);
+      perPage(per);
       setPage(1);
       setImages([]);
    };
@@ -95,18 +94,18 @@ export default function App() {
    const openModal = (url, alt) => {
       setModal({ url, alt });
       setTimeout(() => {
-         setShowModal(true);
+         setModal.url(true);
       }, 100);
    };
 
    return (
       <div className="App">
          <Searchbar onSubmit={onSubmit} />
-         {showModal && (
+         {modal.ulr && (
             <Modal
                url={modal.url}
                alt={modal.alt}
-               onClose={() => setShowModal(false)}
+               onClose={() => setModal.url(false)}
             />
          )}
          <ImageGallery images={images} openModal={openModal} />
