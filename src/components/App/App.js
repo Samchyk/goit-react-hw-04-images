@@ -11,7 +11,7 @@ import * as Scroll from 'react-scroll';
 export default function App() {
    const [searchName, setSearchName] = useState('');
    const [page, setPage] = useState(1);
-   const [perPage] = useState(12);
+   const perPage = 12;
    const [images, setImages] = useState([]);
    const [loading, setLoading] = useState(false);
    const [showLoadMore, setShowLoadMore] = useState(false);
@@ -93,9 +93,7 @@ export default function App() {
 
    const openModal = (url, alt) => {
       setModal({ url, alt });
-      setTimeout(() => {
-         setModal.url(true);
-      }, 100);
+      setTimeout(() => 100);
    };
 
    return (
@@ -105,7 +103,7 @@ export default function App() {
             <Modal
                url={modal.url}
                alt={modal.alt}
-               onClose={() => setModal.url(false)}
+               onClose={() => setModal({})}
             />
          )}
          <ImageGallery images={images} openModal={openModal} />
