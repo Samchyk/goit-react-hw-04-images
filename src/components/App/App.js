@@ -93,7 +93,6 @@ export default function App() {
 
    const openModal = (url, alt) => {
       setModal({ url, alt });
-      setTimeout(() => 100);
    };
 
    return (

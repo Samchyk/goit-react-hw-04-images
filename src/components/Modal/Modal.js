@@ -4,15 +4,11 @@ import s from './Modal.module.css';
 import PropTypes from 'prop-types';
 
 export default function Modal({ onClose, url, alt }) {
-   const modalRoot = useRef(document.querySelector('#modal-root'));
-
    useEffect(() => {
       const handelKeyUp = e => {
          if (e.code === 'Escape') {
             addCloseClass();
-            setTimeout(() => {
-               onClose();
-            }, 1000);
+            onClose();
          }
       };
       window.addEventListener('keydown', handelKeyUp);
@@ -24,9 +20,7 @@ export default function Modal({ onClose, url, alt }) {
    const handleBackdropClick = e => {
       if (e.target === e.currentTarget) {
          addCloseClass();
-         setTimeout(() => {
-            onClose();
-         }, 1000);
+         onClose();
       }
    };
    const addCloseClass = () => {
@@ -45,7 +39,7 @@ export default function Modal({ onClose, url, alt }) {
             <img src={url} alt={alt} />
          </div>
       </div>,
-      modalRoot.current
+      document.querySelector('#modal-root')
    );
 }
 
